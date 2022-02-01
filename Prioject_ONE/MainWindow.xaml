@@ -1,0 +1,139 @@
+﻿<Window x:Class="Prioject_ONE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prioject_ONE"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="550" ResizeMode="NoResize" KeyDown="ColorListAddKey">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.4*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical">
+            <Menu >
+                <MenuItem Header=" Options"/>
+                <MenuItem Header=" Help"/>
+            </Menu>
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="Color Picker" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border BorderThickness="1" BorderBrush="Black" Margin="2" Width="80" Height="80">
+                    <Grid>
+                        <Border BorderBrush="Red" BorderThickness="1" VerticalAlignment="Center"/>
+                        <Border BorderBrush="Red" BorderThickness="1" HorizontalAlignment="Center"/>
+                        <Image Source="{Binding Mouse_Value_imagesource}"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1" BorderThickness="1" BorderBrush="Black" Margin="2" Width="80" Height="80" Background="{Binding Mouse_Value_Color}">
+                </Border>
+
+                <Border Grid.Column="2" BorderThickness="1" BorderBrush="White" Margin="2" VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock>
+                            <Run Text="["/>
+                            <Run Text="{Binding Mouse_ValueX}"/>
+                            <Run Text="."/>
+                            <Run Text="{Binding Mouse_ValueY}"/>
+                            <Run Text="]"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="HEX["/>
+                            <Run Text="{Binding HEXValue}"/>
+                            <Run Text="]"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="R:["/>
+                            <Run Text="{Binding RGB_Value_R}"/>
+                            <Run Text="]"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="G:["/>
+                            <Run Text="{Binding RGB_Value_G}"/>
+                            <Run Text="]"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="B:["/>
+                            <Run Text="{Binding RGB_Value_B}"/>
+                            <Run Text="]"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="0" Header="Converter" Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="RGB to HEX" Margin="2">
+                    <StackPanel Orientation="Horizontal" Height="25">
+                        <TextBox Text="{Binding RGBtoHEX_R, UpdateSourceTrigger=PropertyChanged}" Width="30" Margin="2" MaxLength="3"/>
+                        <TextBox Text="{Binding RGBtoHEX_G, UpdateSourceTrigger=PropertyChanged}" Width="30" Margin="2" MaxLength="3"/>
+                        <TextBox Text="{Binding RGBtoHEX_B, UpdateSourceTrigger=PropertyChanged}" Width="30" Margin="2" MaxLength="3"/>
+                        <Button Content=">>" Command="{Binding RGBtoHEX_Button}" Width="40" Margin="2"/>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="2">
+                            <TextBlock Text="{Binding RGBtoHEX_Hex, UpdateSourceTrigger=PropertyChanged}" Width="70" Background="#e1e1e1" />
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="White" Background="{Binding RGBtoHEX_Color, UpdateSourceTrigger=PropertyChanged}" Width="55" Margin="2"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="HEX to RGB">
+                    <StackPanel Orientation="Horizontal" Margin="2" Height="25">
+                        <TextBox Text="{Binding HEXtoRGB_Hex}" Width="70" Margin="2" MaxLength="6" CharacterCasing="Upper"/>
+                        <Button Content=">>" Command="{Binding HEXtoRGB_Button}" Width="40" Margin="2"/>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="2">
+                            <TextBox Text="{Binding HEXtoRGB_R}" Width="30" Background="#e1e1e1"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="2">
+                            <TextBox Text="{Binding HEXtoRGB_G}" Width="30" Background="#e1e1e1"/>
+                        </Border>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="2">
+                            <TextBox Text="{Binding HEXtoRGB_B}" Width="30" Background="#e1e1e1"/>
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="White" Background="{Binding HEXtoRGB_Color}" Width="55" Margin="2"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+        <!--ListView 간격 조절 Grid-->
+        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="10" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" x:Name="dummywidth1"/>
+            <Border Grid.Column="1" x:Name="dummywidth2"/>
+        </Grid>
+
+        <ListView Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="10" ItemsSource="{Binding ListView_Oicolorlist}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="{Binding ElementName=dummywidth1, Path=ActualWidth}" Header="RGB" DisplayMemberBinding="{Binding ListView_RGB}"/>
+                    <GridViewColumn Width="{Binding ElementName=dummywidth2, Path=ActualWidth}" Header="HEX" DisplayMemberBinding="{Binding ListView_HEX}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
