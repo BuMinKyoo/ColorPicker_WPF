@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Prioject_ONE
+namespace ColorPicker_WPF
 {
     internal class Command : ICommand
     {

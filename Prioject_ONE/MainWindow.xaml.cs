@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Prioject_ONE
+namespace ColorPicker_WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prioject_ONE
+namespace ColorPicker_WPF
 {
     public class Oicolor : INotifyPropertyChanged
     {
