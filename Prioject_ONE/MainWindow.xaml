@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorPicker_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="550" ResizeMode="NoResize" KeyDown="ColorListAddKey">
+        Title="MainWindow" Height="350" Width="550" ResizeMode="NoResize" KeyDown="ColorListAddKey"
+        Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.4*"/>

@@ -491,5 +491,13 @@ namespace ColorPicker_WPF
                 }
             }
         }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (MessageBox.Show("정말로 종료하시겠습니까?", "종료확인", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
